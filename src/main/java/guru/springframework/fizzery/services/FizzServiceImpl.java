@@ -15,4 +15,17 @@ public class FizzServiceImpl implements FizzService {
                 .fizzStyle("FizzAle")
                 .build();
     }
+
+    @Override
+    public FizzDto saveNewFizz(FizzDto fizzDto) {
+        return FizzDto.builder()
+                .id(UUID.randomUUID())
+                .fizzName(fizzDto.getFizzName())
+                .build();
+    }
+
+    @Override
+    public void updateFizz(UUID fizzId, FizzDto fizzDto) {
+
+    }
 }
