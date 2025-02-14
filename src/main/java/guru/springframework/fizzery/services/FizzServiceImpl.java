@@ -1,14 +1,15 @@
 package guru.springframework.fizzery.services;
 
 import guru.springframework.fizzery.web.model.FizzDto;
-import lombok.extern.slf4j.Slf4j;
+import org.slf4j.Logger;
 import org.springframework.stereotype.Service;
 
 import java.util.UUID;
 
-@Slf4j
 @Service
 public class FizzServiceImpl implements FizzService {
+    private static final Logger log = org.slf4j.LoggerFactory.getLogger(FizzServiceImpl.class);
+
     @Override
     public FizzDto getFizzById(UUID fizzId) {
         return FizzDto.builder()
