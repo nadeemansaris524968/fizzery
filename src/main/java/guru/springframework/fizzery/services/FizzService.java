@@ -10,4 +10,6 @@ public interface FizzService {
     FizzDto saveNewFizz(FizzDto fizzDto);
 
     void updateFizz(UUID fizzId, FizzDto fizzDto);
+
+    void deleteById(UUID fizzId);
 }

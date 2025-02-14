@@ -27,7 +27,7 @@ public class FizzController {
     }
 
     @PostMapping
-    public ResponseEntity handlePost(FizzDto fizzDto) {
+    public ResponseEntity handlePost(@RequestBody FizzDto fizzDto) {
         FizzDto saved = fizzService.saveNewFizz(fizzDto);
         HttpHeaders headers = new HttpHeaders();
         headers.add("Location", "/api/v1/fizz/" + saved.getId().toString());
@@ -35,8 +35,14 @@ public class FizzController {
     }
 
     @PutMapping("/{fizzId}")
-    public ResponseEntity handleUpdate(@PathVariable("fizzId") UUID fizzId, FizzDto fizzDto) {
+    public ResponseEntity handleUpdate(@PathVariable("fizzId") UUID fizzId,@RequestBody FizzDto fizzDto) {
         fizzService.updateFizz(fizzId, fizzDto);
         return new ResponseEntity(HttpStatus.NO_CONTENT);
+    }
+
+    @DeleteMapping("/{fizzId}")
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    public void deleteFizz(@PathVariable("fizzId") UUID fizzId) {
+        fizzService.deleteById(fizzId);
     }
 }
